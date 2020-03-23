@@ -1,12 +1,20 @@
+import { action } from 'typesafe-actions';
 import { 
   Category, 
   CategoryActionTypes,
-  FETCH_CATEGORIES
+  GET_ALL_REQUEST,
+  GET_ALL_SUCCESS,
+  REQUEST_ERROR
 } from "./types";
 
-export function fetchCategories(categories: Category[]): CategoryActionTypes {
-  return {
-    type: FETCH_CATEGORIES,
-    payload: categories,
-  };
+export function getAllRequest(): CategoryActionTypes {
+  return action(GET_ALL_REQUEST);
+}
+
+export function getAllSuccess(categories: Category[]): CategoryActionTypes {
+  return action(GET_ALL_SUCCESS, categories);
+}
+
+export function requestError(message: string): CategoryActionTypes {
+  return action(REQUEST_ERROR, message);
 }

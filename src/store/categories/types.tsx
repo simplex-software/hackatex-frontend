@@ -4,15 +4,30 @@ export interface Category {
 }
 
 export interface CategoriesState {
+  loading: boolean;
   categories: Category[];
+  errors?: string;
 }
 
-export const FETCH_CATEGORIES = 'FETCH_CATEGORIES';
+export const GET_ALL_REQUEST = '@@categories/GET_ALL_REQUEST';
+export const GET_ALL_SUCCESS = '@@categories/GET_ALL_SUCCESS';
+export const REQUEST_ERROR = '@@categories/REQUEST_ERROR';
 
-interface FetchCategoriesAction {
-  type: typeof FETCH_CATEGORIES;
+interface GetAllCategoriesRequestAction {
+  type: typeof GET_ALL_REQUEST;
+}
+
+interface GetAllCategoriesSuccessAction {
+  type: typeof GET_ALL_SUCCESS;
   payload: Category[];
 }
 
+interface CategoriesErrorAction {
+  type: typeof REQUEST_ERROR;
+  payload: string;
+}
+
 export type CategoryActionTypes =
-  | FetchCategoriesAction;
+  | GetAllCategoriesRequestAction
+  | GetAllCategoriesSuccessAction
+  | CategoriesErrorAction;

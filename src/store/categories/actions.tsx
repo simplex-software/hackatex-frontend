@@ -4,7 +4,7 @@ import {
   CategoryActionTypes,
   GET_ALL_REQUEST,
   GET_ALL_SUCCESS,
-  REQUEST_ERROR
+  REQUEST_FAILURE
 } from "./types";
 
 export function getAllRequest(): CategoryActionTypes {
@@ -15,6 +15,6 @@ export function getAllSuccess(categories: Category[]): CategoryActionTypes {
   return action(GET_ALL_SUCCESS, categories);
 }
 
-export function requestError(message: string): CategoryActionTypes {
-  return action(REQUEST_ERROR, message);
+export function requestFailure(message: string): CategoryActionTypes {
+  return action(REQUEST_FAILURE, message);
 }

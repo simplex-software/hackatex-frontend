@@ -4,14 +4,14 @@ export interface Category {
 }
 
 export interface CategoriesState {
-  loading: boolean;
   categories: Category[];
-  errors?: string;
+  category: Category;
 }
 
 export const GET_ALL_REQUEST = '@@categories/GET_ALL_REQUEST';
 export const GET_ALL_SUCCESS = '@@categories/GET_ALL_SUCCESS';
-export const REQUEST_ERROR = '@@categories/REQUEST_ERROR';
+export const SELECT = '@@categories/SELECT'
+export const REQUEST_FAILURE = '@@categories/REQUEST_FAILURE';
 
 interface GetAllCategoriesRequestAction {
   type: typeof GET_ALL_REQUEST;
@@ -22,12 +22,18 @@ interface GetAllCategoriesSuccessAction {
   payload: Category[];
 }
 
-interface CategoriesErrorAction {
-  type: typeof REQUEST_ERROR;
+interface SelectCategorieSuccessAction {
+  type: typeof SELECT;
+  payload: Category;
+}
+
+interface CategoriesFailureAction {
+  type: typeof REQUEST_FAILURE;
   payload: string;
 }
 
 export type CategoryActionTypes =
   | GetAllCategoriesRequestAction
   | GetAllCategoriesSuccessAction
-  | CategoriesErrorAction;
+  | SelectCategorieSuccessAction
+  | CategoriesFailureAction;

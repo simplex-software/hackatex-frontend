@@ -1,20 +1,20 @@
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects'
 
-import { requestError, getAllSuccess } from './actions'
-import { callApi, API_ENDPOINT } from '../../utils/api'
+import { requestFailure, getAllSuccess } from './actions'
+import { callApi } from '../../utils/api'
 import { GET_ALL_REQUEST } from './types'
 
 function* handleGetAll() {
   try {
-    const res = yield call(callApi, 'get', API_ENDPOINT, '/categories')
+    const res = yield call(callApi, 'get', '/categories')
 
     if (res.error) {
-      yield put(requestError(res.error))
+      yield put(requestFailure(res.error))
     } else {
       yield put(getAllSuccess(res.categories))
     }
   } catch (err) {
-    yield put(requestError(err.stack))
+    yield put(requestFailure(err.stack))
   }
 }
 

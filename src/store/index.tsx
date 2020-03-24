@@ -1,16 +1,8 @@
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import createSagaMiddleware from 'redux-saga';
 
-import eventsReducer from './events/reducers';
-import categoriesReducer from './categories/reducers';
-import commentsReducer from './comments/reducers';
-import { rootSaga } from './sagas';
-
-const rootReducer = combineReducers({
-  categories: categoriesReducer,
-  events: eventsReducer,
-  comments: commentsReducer
-});
+import { rootReducer } from './rootReducer';
+import { rootSaga } from './rootSaga';
 
 export type RootState = ReturnType<typeof rootReducer>;
 

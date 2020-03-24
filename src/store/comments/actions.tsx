@@ -1,36 +1,30 @@
+import { action } from "typesafe-actions";
 import { 
   Comment, 
   CommentActionTypes,
-  FETCH_COMMENTS,
-  CREATE_COMMENT,
-  UPDATE_COMMENT,
-  DELETE_COMMENT
+  GET_ALL_REQUEST,
+  GET_ALL_SUCCESS,
+  CREATE_REQUEST,
+  CREATE_SUCCESS,
+  REQUEST_FAILURE
 } from "./types";
 
-export function fetchComments(comments: Comment[]): CommentActionTypes {
-  return {
-    type: FETCH_COMMENTS,
-    payload: comments,
-  };
+export function getAllRequest(): CommentActionTypes {
+  return action(GET_ALL_REQUEST);
 }
 
-export function createEvent(comments: Comment): CommentActionTypes {
-  return {
-    type: CREATE_COMMENT,
-    payload: comments,
-  };
+export function getAllSuccess(comments: Comment[]): CommentActionTypes {
+  return action(GET_ALL_SUCCESS, comments);
 }
 
-export function updateEvent(comments: Comment): CommentActionTypes {
-  return {
-    type: UPDATE_COMMENT,
-    payload: comments,
-  };
+export function createRequest(comment: Comment): CommentActionTypes {
+  return action(CREATE_REQUEST, comment);
 }
 
-export function removeEvent(id: number): CommentActionTypes {
-  return {
-    type: DELETE_COMMENT,
-    payload: id,
-  };
+export function createSuccess(): CommentActionTypes {
+  return action(CREATE_SUCCESS);
+}
+
+export function requestFailure(message: string): CommentActionTypes {
+  return action(REQUEST_FAILURE, message);
 }

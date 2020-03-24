@@ -1,14 +1,11 @@
 import { 
   CommentsState, 
-  CommentActionTypes, 
-  FETCH_COMMENTS, 
-  CREATE_COMMENT,
-  UPDATE_COMMENT,
-  DELETE_COMMENT
+  CommentActionTypes,
+  GET_ALL_SUCCESS,
 } from "./types";
 
 const initialState: CommentsState = {
-  comments: [],
+  comments: []
 };
 
 export default function commentsReducer(
@@ -16,14 +13,8 @@ export default function commentsReducer(
   action: CommentActionTypes,
 ): CommentsState {
   switch (action.type) {
-    case FETCH_COMMENTS:
-      
-    case CREATE_COMMENT:
-
-    case UPDATE_COMMENT:
-
-    case DELETE_COMMENT:
-
+    case GET_ALL_SUCCESS:
+      return { ...state, comments: action.payload }
     default:
       return state;
   }

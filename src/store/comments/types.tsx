@@ -9,33 +9,38 @@ export interface CommentsState {
   comments: Comment[];
 }
 
-export const FETCH_COMMENTS = 'FETCH_COMMENTS';
-export const CREATE_COMMENT = 'CREATE_COMMENT';
-export const UPDATE_COMMENT = 'UPDATE_COMMENT';
-export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const GET_ALL_REQUEST = '@@comments/GET_ALL_REQUEST';
+export const GET_ALL_SUCCESS = '@@comments/GET_ALL_SUCCESS';
+export const CREATE_REQUEST = '@@comments/CREATE_REQUEST';
+export const CREATE_SUCCESS = '@@comments/CREATE_SUCCESS';
+export const REQUEST_FAILURE = '@@comments/REQUEST_FAILURE';
 
-interface FetchCommentsAction {
-  type: typeof FETCH_COMMENTS;
+interface GetAllCommentsRequestAction {
+  type: typeof GET_ALL_REQUEST;
+}
+
+interface GetAllCommentsSuccessAction {
+  type: typeof GET_ALL_SUCCESS;
   payload: Comment[];
 }
 
-interface CreateCommentAction {
-  type: typeof CREATE_COMMENT;
+interface CreateCommentRequestAction {
+  type: typeof CREATE_REQUEST;
   payload: Comment;
 }
 
-interface UpdateCommentAction {
-  type: typeof UPDATE_COMMENT;
-  payload: Comment;
+interface CreateCommentSuccessAction {
+  type: typeof CREATE_SUCCESS;
 }
 
-interface DeleteCommentAction {
-  type: typeof DELETE_COMMENT;
-  payload: number;
+interface CommentFailureAction {
+  type: typeof REQUEST_FAILURE;
+  payload: string;
 }
 
 export type CommentActionTypes =
-  | FetchCommentsAction
-  | CreateCommentAction
-  | UpdateCommentAction
-  | DeleteCommentAction;
+  | GetAllCommentsRequestAction
+  | GetAllCommentsSuccessAction
+  | CreateCommentRequestAction
+  | CreateCommentSuccessAction
+  | CommentFailureAction;
